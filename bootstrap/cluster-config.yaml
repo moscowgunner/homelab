@@ -1,0 +1,39 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+
+metadata:
+  name: homelab
+
+servers: 1
+agents: 2
+
+image: rancher/k3s:v1.33.1-k3s1
+
+ports:
+  - port: "80:80"
+    nodeFilters:
+      - loadbalancer
+
+  - port: "443:443"
+    nodeFilters:
+      - loadbalancer
+
+options:
+  kubeconfig:
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true
+
+  k3d:
+    wait: true
+    timeout: "120s"
+
+  k3s:
+    extraArgs:
+      - arg: "--disable=traefik"
+        nodeFilters:
+          - server:*
+
+volumes:
+  - volume: "${HOME}/.k3d-storage:/var/lib/rancher/k3s/storage"
+    nodeFilters:
+      - server:*
