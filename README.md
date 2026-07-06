@@ -44,8 +44,8 @@ The project focuses on:
 ## Completed
 
 - [x] Local Kubernetes cluster (k3d)
-- [x] Helm
-- [x] Traefik
+- [ ] Helm
+- [ ] Traefik
 - [ ] ArgoCD
 - [ ] Monitoring stack
 - [ ] PostgreSQL
