@@ -63,15 +63,41 @@ flowchart TB
 
 ## Control Plane
 
-- kube-apiserver
-- etcd
-- kube-scheduler
-- kube-controller-manager
+The Control Plane is the brain of the Kubernetes cluster.
+
+It receives all API requests, stores the desired state of the cluster, schedules workloads and continuously ensures that the actual state matches the desired state.
+
+Main components:
+
+| Component | Responsibility |
+|-----------|----------------|
+| kube-apiserver | Entry point to the Kubernetes API |
+| etcd | Stores the desired state of the cluster |
+| kube-scheduler | Selects the most suitable Node for new Pods |
+| kube-controller-manager | Continuously reconciles the current and desired state |
+
+> **Note**
+>
+> Each Control Plane component will be explained in detail in its own document.
 
 ## Worker Node
 
-- kubelet
-- containerd
+The Control Plane is the brain of the Kubernetes cluster.
+
+It receives all API requests, stores the desired state of the cluster, schedules workloads and continuously ensures that the actual state matches the desired state.
+
+Main components:
+
+| Component | Responsibility |
+|-----------|----------------|
+| kube-apiserver | Entry point to the Kubernetes API |
+| etcd | Stores the desired state of the cluster |
+| kube-scheduler | Selects the most suitable Node for new Pods |
+| kube-controller-manager | Continuously reconciles the current and desired state |
+
+> **Note**
+>
+> Each Control Plane component will be explained in detail in its own document.
 
 ## Platform Services
 
@@ -80,3 +106,39 @@ K3s installs several platform services automatically.
 Read more:
 
 - [Kubernetes System Components](./kubernetes-system-components.md)
+
+# Summary
+
+The Kubernetes architecture consists of two major parts:
+
+- **Control Plane** — manages the cluster.
+- **Worker Nodes** — run application workloads.
+
+Every request follows the same high-level flow:
+
+```text
+kubectl
+        │
+        ▼
+kube-apiserver
+        │
+        ▼
+etcd
+        │
+        ▼
+Controller Manager
+        │
+        ▼
+Scheduler
+        │
+        ▼
+kubelet
+        │
+        ▼
+containerd
+        │
+        ▼
+Pods
+```
+
+Understanding this request flow is the foundation for understanding Kubernetes.
