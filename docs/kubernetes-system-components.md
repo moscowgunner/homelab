@@ -63,6 +63,18 @@ instead of
 10.43.18.25
 ```
 
+```mermaid
+flowchart LR
+
+A[Frontend Pod] --> B["backend.default.svc.cluster.local"]
+
+B --> C[CoreDNS]
+
+C --> D[Service ClusterIP]
+
+D --> E[Backend Pod]
+```
+
 ---
 
 # Metrics Server
