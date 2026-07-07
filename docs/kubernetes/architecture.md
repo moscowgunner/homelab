@@ -59,3 +59,22 @@ flowchart TB
 
     CRI --> Pods
 ```
+
+
+## Control Plane
+
+- kube-apiserver
+- etcd
+- kube-scheduler
+- kube-controller-manager
+
+## Worker Node
+
+- kubelet
+- containerd
+
+## Platform Services
+
+- CoreDNS
+- Metrics Server
+- Local Path Provisioner
