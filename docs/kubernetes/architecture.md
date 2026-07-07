@@ -75,6 +75,8 @@ flowchart TB
 
 ## Platform Services
 
-- CoreDNS
-- Metrics Server
-- Local Path Provisioner
+K3s installs several platform services automatically.
+
+Read more:
+
+- [Kubernetes System Components](./kubernetes-system-components.md)
