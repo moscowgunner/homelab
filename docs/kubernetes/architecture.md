@@ -80,24 +80,25 @@ Main components:
 >
 > Each Control Plane component will be explained in detail in its own document.
 
-## Worker Node
+# Worker Node
 
-The Control Plane is the brain of the Kubernetes cluster.
+A Worker Node is responsible for running application workloads.
 
-It receives all API requests, stores the desired state of the cluster, schedules workloads and continuously ensures that the actual state matches the desired state.
+It receives instructions from the Control Plane and executes them by creating, monitoring and maintaining Pods.
+
+A Worker Node does not decide where Pods should run. Its responsibility is to ensure that the assigned workloads are running correctly.
 
 Main components:
 
 | Component | Responsibility |
 |-----------|----------------|
-| kube-apiserver | Entry point to the Kubernetes API |
-| etcd | Stores the desired state of the cluster |
-| kube-scheduler | Selects the most suitable Node for new Pods |
-| kube-controller-manager | Continuously reconciles the current and desired state |
+| kubelet | Watches the API Server and ensures that assigned Pods are running |
+| containerd | Downloads container images and manages containers |
+| Pods | The smallest deployable units that run application workloads |
 
 > **Note**
 >
-> Each Control Plane component will be explained in detail in its own document.
+> Each Worker Node component will be explained in detail in its own document.
 
 ## Platform Services
 
