@@ -143,3 +143,11 @@ Pods
 ```
 
 Understanding this request flow is the foundation for understanding Kubernetes.
+
+> **Important**
+>
+> Running applications do not continuously depend on the Kubernetes API.
+>
+> The Control Plane manages workloads, but the Worker Nodes execute them.
+>
+> As a result, applications may continue serving traffic even if the Control Plane becomes temporarily unavailable.
