@@ -202,7 +202,8 @@ kubectl api-versions
 
 ---
 
-flowchart TB
+```mermaid
+sequenceDiagram
 
 Client["kubectl / Helm / Argo CD"]
 
@@ -227,7 +228,7 @@ Scheduler --> Kubelet[kubelet]
 Kubelet --> Containerd[containerd]
 
 Containerd --> Pod[Running Pod]
-
+```
 
 # Summary
 
