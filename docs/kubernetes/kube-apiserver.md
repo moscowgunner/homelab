@@ -202,6 +202,33 @@ kubectl api-versions
 
 ---
 
+flowchart TB
+
+Client["kubectl / Helm / Argo CD"]
+
+Client --> API[kube-apiserver]
+
+API --> Auth[Authentication]
+
+Auth --> RBAC[Authorization]
+
+RBAC --> Validation[Validation]
+
+Validation --> Admission[Admission Controllers]
+
+Admission --> ETCD[(etcd)]
+
+ETCD --> Controllers[Controllers]
+
+Controllers --> Scheduler[kube-scheduler]
+
+Scheduler --> Kubelet[kubelet]
+
+Kubelet --> Containerd[containerd]
+
+Containerd --> Pod[Running Pod]
+
+
 # Summary
 
 - kube-apiserver is the single entry point to Kubernetes.
