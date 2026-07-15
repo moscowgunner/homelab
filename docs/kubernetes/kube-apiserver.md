@@ -1,6 +1,6 @@
 # kube-apiserver
 
-← [Kubernetes Architecture](../architecture.md)
+← [Kubernetes Architecture](architecture.md)
 
 ---
 
