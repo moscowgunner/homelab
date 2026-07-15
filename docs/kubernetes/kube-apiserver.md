@@ -54,6 +54,34 @@ Instead, Kubernetes uses a single entry point that validates every request befor
 
 ---
 
+```mermaid
+flowchart TB
+
+    Client["kubectl / Helm / Argo CD"]
+
+    Client --> API["kube-apiserver"]
+
+    subgraph APIServer["Request Processing"]
+
+        API --> Auth["Authentication"]
+
+        Auth --> RBAC["Authorization (RBAC)"]
+
+        RBAC --> Validation["Validation"]
+
+        Validation --> Admission["Admission Controllers"]
+
+    end
+
+    Admission --> ETCD[("etcd")]
+
+    ETCD -->|"Desired State stored"| Next["Other Control Plane Components"]
+
+    style API fill:#4A90E2,color:#fff
+    style ETCD fill:#6DB33F,color:#fff
+```
+---
+
 # Request Flow
 
 ```mermaid
@@ -200,35 +228,6 @@ View API versions:
 kubectl api-versions
 ```
 
----
-
-```mermaid
-sequenceDiagram
-
-Client["kubectl / Helm / Argo CD"]
-
-Client --> API[kube-apiserver]
-
-API --> Auth[Authentication]
-
-Auth --> RBAC[Authorization]
-
-RBAC --> Validation[Validation]
-
-Validation --> Admission[Admission Controllers]
-
-Admission --> ETCD[(etcd)]
-
-ETCD --> Controllers[Controllers]
-
-Controllers --> Scheduler[kube-scheduler]
-
-Scheduler --> Kubelet[kubelet]
-
-Kubelet --> Containerd[containerd]
-
-Containerd --> Pod[Running Pod]
-```
 
 # Summary
 
