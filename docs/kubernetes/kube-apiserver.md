@@ -54,6 +54,8 @@ Instead, Kubernetes uses a single entry point that validates every request befor
 
 ---
 
+# Request Flow
+
 ```mermaid
 flowchart TB
 
@@ -82,25 +84,6 @@ flowchart TB
 ```
 ---
 
-# Request Flow
-
-```mermaid
-flowchart LR
-
-A[kubectl] --> B[kube-apiserver]
-
-B --> C[Authentication]
-
-C --> D[Authorization]
-
-D --> E[Validation]
-
-E --> F[Admission Controllers]
-
-F --> G[(etcd)]
-```
-
----
 
 # Responsibilities
 
