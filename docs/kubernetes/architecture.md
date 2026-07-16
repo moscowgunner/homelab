@@ -72,7 +72,7 @@ Main components:
 | Component | Responsibility |
 |-----------|----------------|
 | [kube-apiserver](kube-apiserver.md) | Entry point to the Kubernetes API |
-| etcd | Stores the desired state of the cluster |
+| [etcd](etcd.md) | Stores the desired state of the cluster |
 | kube-scheduler | Selects the most suitable Node for new Pods |
 | kube-controller-manager | Continuously reconciles the current and desired state |
 
