@@ -73,7 +73,7 @@ Main components:
 |-----------|----------------|
 | [kube-apiserver](kube-apiserver.md) | Entry point to the Kubernetes API |
 | [etcd](etcd.md) | Stores the desired state of the cluster |
-| [kube-scheduler] (kube-scheduler.md) | Selects the most suitable Node for new Pods |
+| [kube-scheduler](kube-scheduler.md) | Selects the most suitable Node for new Pods |
 | [kube-controller-manager](kube-controller-manager.md) | Continuously reconciles the current and desired state |
 
 > **Note**
