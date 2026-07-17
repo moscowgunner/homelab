@@ -93,7 +93,7 @@ Main components:
 | Component | Responsibility |
 |-----------|----------------|
 | [kubelet](kubelet.md) | Watches the API Server and ensures that assigned Pods are running |
-| containerd | Downloads container images and manages containers |
+| [containerd](containerd.md) | Downloads container images and manages containers |
 | Pods | The smallest deployable units that run application workloads |
 
 > **Note**
