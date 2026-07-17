@@ -94,7 +94,7 @@ Main components:
 |-----------|----------------|
 | [kubelet](kubelet.md) | Watches the API Server and ensures that assigned Pods are running |
 | [containerd](containerd.md) | Downloads container images and manages containers |
-| Pods | The smallest deployable units that run application workloads |
+| [Pods](pods.md) | The smallest deployable units that run application workloads |
 
 > **Note**
 >
@@ -151,3 +151,38 @@ Understanding this request flow is the foundation for understanding Kubernetes.
 > The Control Plane manages workloads, but the Worker Nodes execute them.
 >
 > As a result, applications may continue serving traffic even if the Control Plane becomes temporarily unavailable.
+
+
+```mermaid
+flowchart TB
+
+    User["kubectl / Helm / Argo CD"]
+
+    API["kube-apiserver"]
+
+    ETCD[("etcd")]
+
+    Controller["Controller Manager"]
+
+    Scheduler["Scheduler"]
+
+    Kubelet["kubelet"]
+
+    Runtime["containerd"]
+
+    Pod["Running Pod"]
+
+    User --> API
+
+    API <--> ETCD
+
+    Controller --> API
+
+    Scheduler --> API
+
+    Kubelet --> API
+
+    Kubelet --> Runtime
+
+    Runtime --> Pod
+```
